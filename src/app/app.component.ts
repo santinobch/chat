@@ -1,9 +1,8 @@
-import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FixedDataService } from './services/fixedData/fixedData.service';
 
 import { faPaperclip, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FixedMessageModel } from './models/fixed/fixedMessage.model';
-import { firstValueFrom, lastValueFrom, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +18,6 @@ export class AppComponent {
   faPaperclip = faPaperclip;
   faChevronRight = faChevronRight;
 
-  inputObservable!: Observable<ElementRef>;
-  inputSub!: Subscription;
   inputElement!: ElementRef;
 
   ngOnInit(): void {
@@ -54,15 +51,7 @@ export class AppComponent {
     }
   }
 
-  storeObservable(ob: Observable<ElementRef>) {
-    this.inputObservable = ob;
-
-    this.inputSub = this.inputObservable.subscribe(el => {
+  storeObservable(el: ElementRef) {
       this.inputElement = el
-    })
-  }
-
-  ngOnDestroy() {
-    this.inputSub.unsubscribe();
   }
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 import { slideInLeftAnimation } from 'src/app/animations/slideInRight.animation';
 import { ContactModel } from 'src/app/models/contact.model';
@@ -21,20 +20,15 @@ export class RightBoxComponent implements OnInit {
   toggled: boolean = true;
   contacts!: ContactModel[];
 
-  inputObservable!: Observable<ElementRef>;
-  inputSub!: Subscription;
-  inputElement!: ElementRef;
-
   ngOnInit(): void {
-    this.contacts = this.dataService.fixedData.contacts
+    setTimeout(() => {
+      this.contacts = this.dataService.fixedData.contacts
+    }, 1000);
   }
 
-  storeObservable(ob: Observable<ElementRef>) {
-    this.inputObservable = ob;
+  storeObservable(el: ElementRef) {
+    if (el != undefined) {
 
-    this.inputObservable.subscribe(el => {
-
-      console.log("active");
       this.contacts = [];
 
       this.dataService.fixedData.contacts.forEach(c => {
@@ -43,10 +37,7 @@ export class RightBoxComponent implements OnInit {
           this.contacts.push(c);
         }
       })
-    })
-  }
 
-  ngOnDestroy() {
-    this.inputSub.unsubscribe();
+    }
   }
 }

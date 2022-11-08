@@ -16,8 +16,6 @@ export class InputComponent implements OnInit {
   public type_: string = "";
   public placeholder_: string = "";
 
-  private inputSubject: Subject<ElementRef> = new Subject<ElementRef>;
-
   @Input()
   get type(): string { return this.type_; }
   set type(v: string) { this.type_ = v  };
@@ -26,13 +24,12 @@ export class InputComponent implements OnInit {
   get placeholder(): string { return this.placeholder_; }
   set placeholder(v: string) { this.placeholder_ = v  };
 
-  @Output() getObserver = new EventEmitter<Observable<ElementRef>>();
+  @Output() getObserver = new EventEmitter<ElementRef>();
 
   ngOnInit(): void {
   }
 
   nextValue() {
-    this.inputSubject.next(this.inputElement);
-    this.getObserver.emit(this.inputSubject.asObservable());
+    this.getObserver.emit(this.inputElement);
   }
 }
