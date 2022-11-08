@@ -1,0 +1,178 @@
+@import "../../scss/colors.scss";
+@import "../../scss/vars.scss";
+
+@mixin button {
+    height: 80px;
+    width: 90%;
+
+    background-color: $dark2;
+
+    margin-left: calc($normal_spacing/2);
+    margin-top: calc($normal_spacing/2);
+    margin-bottom: calc($normal_spacing/2);
+
+    border-radius: 40px;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $middle1;
+    }
+
+    &:active {
+        background-color: $middle2;
+    }
+}
+
+aside {
+    width: 360px;
+    height: 100vh;
+    overflow: hidden;
+    background-color: $dark2;
+
+    position: absolute;
+    box-shadow: -1px 4px 8px 0px hsla(0, 0%, 0%, 0.15);
+
+    .toggle {
+        display: flex;
+        flex-direction: row;
+
+        button {
+            height: 70px;
+            width: 180px;
+
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: $dark3;
+            border: 0;
+            border-top: $dark3 solid 8px;
+
+            span {
+                color: $middle1;
+                font-family: 'Roboto', sans-serif;
+                font-size: 24px;
+                font-weight: 600;
+            }
+        }
+
+        .toggled {
+            border-color: $middle2;
+
+            span {
+                color: $middle2;
+            }
+        } 
+    }
+
+    .toggleBody {
+        display: flex;
+        flex-direction: row;
+        width: 720px;
+
+
+        .messages {
+            --scrollbar-thumb-color: #{$middle1};
+            --scrollbar-thumb-hover-color: #{$middle2};
+            
+            height: calc(100vh - 70px);
+            width: 360px;
+
+            .user {
+                display: flex;
+                align-items: center;
+                
+                @include button();
+
+                img {
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 100%;
+                    margin-left: calc($normal_spacing/2);
+                }
+
+                .user-info {
+                    margin-left: $normal_spacing;
+
+                    h3, h4 {
+                        margin: 0;
+                        text-align: start;
+                    }
+
+                    h3 {
+                        font-size: 24px;
+                        font-weight: 400;
+                        color: $light3;
+                    }
+
+                    h4 {
+                        font-size: 20px;
+                        font-weight: 300;
+                        color: $middle2;
+                        font-style: italic;
+
+                        &:active {
+                            color: $ligth1;
+                        }
+                    }
+                }
+            }
+
+            .active {
+                background-color: $dark3;
+            }
+
+            hr {
+                width: calc(100% - ($normal_spacing * 2));
+                border: 1px solid $dark3;
+            }
+        }
+    
+        .contacts {
+            --scrollbar-thumb-color: #{$middle1};
+            --scrollbar-thumb-hover-color: #{$middle2};
+
+            height: calc(100vh - 70px);
+            width: 360px;
+            overflow: hidden;
+
+            themed-input {
+                width: calc(360px - $normal_spacing*2);
+            }
+            
+
+            .contact {
+                
+                .img-title {
+                    display: flex;
+                    align-items: center;
+
+                    @include button();
+
+                    img {
+                        height: 60px;
+                        width: 60px;
+                        border-radius: 100%;
+                    }
+    
+                    h3 {
+                        font-size: 24;
+                        font-weight: 400;
+                        color: $light3;
+                        margin: 0;
+                        margin-left: $normal_spacing;
+                    }
+                }
+
+                hr {
+                    width: calc(100% - ($normal_spacing * 2));
+                    border: 1px solid $dark3;
+                }
+            }
+        }
+    }
+}
+

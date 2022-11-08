@@ -1,0 +1,44 @@
+<aside>
+    <div class="toggle">
+        <button [class.toggled]="toggled" (click)="toggled = true">
+            <span>Messages</span>
+        </button>
+        <button [class.toggled]="!toggled"  (click)="toggled = false">
+            <span>Contacts</span>
+        </button>
+
+    </div>
+    <div class="toggleBody" [@slideInLeftAnimation]="toggled">
+
+        <ng-scrollbar class="messages">
+            <div *ngFor="let item of dataService.fixedData.conversations">
+                <button 
+                class="user" 
+                [class.active]="dataService.fixedData.activeConversation == item.id"
+                (click)="dataService.fixedData.activeConversation = item.id">
+                    <img src="../../../assets/avatar2.png" alt="">
+                    <div class="user-info">
+                        <h3>{{item.secondary.name}}</h3>
+                        <h4>{{item.lastMessageTime}}</h4>
+                    </div>
+                </button>
+                <hr>
+            </div>
+        </ng-scrollbar>
+            
+
+        <ng-scrollbar class="contacts">
+            <themed-input placeholder="Search" type="search" (getObserver)="storeObservable($event)"></themed-input>
+
+            <div class="contact" *ngFor="let item of contacts">
+                <button class="img-title" (click)="dataService.newConversation(item.id, item.title); toggled = true">
+                    <img src="../../../assets/avatar2.png" alt="">
+                    <h3>{{item.title}}</h3>
+                </button>
+
+                <hr>
+            </div>
+            
+        </ng-scrollbar>
+    </div>
+</aside>

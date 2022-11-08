@@ -1,0 +1,60 @@
+@import "../../scss/vars.scss";
+@import "../../scss/colors.scss";
+
+.message {
+    width: fit-content;
+    max-width: 70%;
+    height: auto;
+    padding: $normal_spacing;
+    background-color: $dark3;
+    border-radius: $small_radius;
+
+    margin: $normal_spacing;
+
+    .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            height: 60px;
+            width: 60px;
+            border-radius: 100%;
+        }
+
+        .user-name {
+            font-weight: 500;
+            font-size: 24px;
+            margin: 0;
+            margin-left: $normal_spacing;
+        }
+
+        .color-right{
+            color: #E9C46A;
+        }
+
+        .color-left{
+            color: #6AE977;
+        }
+
+        .time {
+            font-size: 20px;
+            font-weight: 300;
+            color: $ligth1;
+
+            margin-left: auto;
+            align-self: flex-start;
+        }
+    }
+
+    p {
+        margin-left: calc(60px + $normal_spacing);
+        color: $light3;
+        font-size: 20px;
+        word-wrap: break-word;
+    }
+}
+
+.right-message {
+    margin-left: auto;
+}

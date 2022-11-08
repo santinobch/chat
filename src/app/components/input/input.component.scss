@@ -1,0 +1,49 @@
+@import "../../scss/colors.scss";
+@import "../../scss/vars.scss";
+
+
+input {
+    height: 60px;
+    width: calc(100% - $normal_spacing * 2);
+    outline: none;
+    border: 2px solid $middle1;
+
+    background-color: $middle1;
+
+    color: $light2;
+    font-size: 24px;
+    font-weight: 300;
+
+    padding-left: $normal_spacing;
+    margin: $normal_spacing;
+
+
+    &::placeholder {
+        color: $middle2;
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    &[type=search] {
+        border-radius: 30px;
+        appearance: none;
+
+        &:focus {
+            border: 2px solid $middle2;
+        }
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration { 
+            display: none; 
+        }
+    }
+
+    
+
+    &[type=text] {
+        border-radius: 10px;
+        margin: 0;
+    }
+}

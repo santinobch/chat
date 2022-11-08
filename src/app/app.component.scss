@@ -1,0 +1,137 @@
+@import "./scss/colors.scss";
+@import "./scss/vars.scss";
+
+main {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: $dark1;
+
+    .left-box {
+        width: calc(100vw - $right-box_width);
+
+        .user-header {
+            height: 120px;
+
+            display: flex;
+            flex-direction: column;
+
+            .user-img-info {
+                height: $user-header_height;
+                margin-left: $normal_spacing;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .user-img {
+                    height: 80px;
+                    width: 80px;
+                    border-radius: 100%;
+                }
+
+                .user-info {
+                    height: 60px;
+                    margin-left: $normal_spacing;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    h1, h2 {
+                        margin: 0;
+                    }
+
+                    h1 {
+                        color: $light3;
+                        font-size: 30px;
+                        font-weight: 600;
+                    }
+
+                    h2 {
+                        color: $middle2;
+                        font-weight: 300;
+                        font-size: 20px;
+                        font-style: italic;
+                    }
+                }
+            }
+
+            hr {
+                width: calc(100% - ($normal_spacing * 2));
+                border: 1px solid $dark3;
+            }
+        }
+
+        .messages-box {
+            --scrollbar-thumb-color: #{$middle1};
+            --scrollbar-thumb-hover-color: #{$middle2};
+
+            overflow: hidden;
+            height: calc(100vh - ($user-header_height + $send-box_height));
+            background-color: $dark1;
+        }
+
+        .send-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: $send-box_height;
+            width: calc(100vw - $right-box_width);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            background-color: $dark3;
+
+            box-shadow: -1px -2px 8px 0px hsla(0, 0%, 0%, 0.15);
+
+            border-top-left-radius: $normal_radius;
+            border-top-right-radius: $normal_radius;
+
+            themed-input {
+                width: calc(100% - ($normal_spacing * 4 + 60px * 2));
+            }
+
+            .button {
+                height: 60px;
+                width: 60px;
+
+                border-radius: 30px;
+                border: 0;
+                outline: none;
+
+                font-size: 25px;
+
+                cursor: pointer;
+            }
+
+            .attach {
+                border: 3px solid $middle2;
+                background-color: $light3;
+                color: $middle2;
+
+                &:active {
+                    border-color: $light3;
+                    background-color: $middle2;
+                    color: $light3;
+                }
+            }
+
+            .send {
+                background-color: $middle2;
+                color: $light3;
+
+                &:active {
+                    background-color: $light3;
+                    color: $middle2;
+                }
+            }
+        }
+    }
+}

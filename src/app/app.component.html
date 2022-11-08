@@ -1,0 +1,42 @@
+<main>
+    <div class="left-box">
+
+        <div *ngIf="dataService.fixedData.conversations[dataService.fixedData.activeConversation] != undefined">
+
+            <div class="user-header">
+
+                <div class="user-img-info">
+                    <img class="user-img" src="../assets/avatar2.png" alt="">
+                    <div class="user-info">
+                        <h1>{{dataService.fixedData.conversations[dataService.fixedData.activeConversation].secondary.name}}</h1>
+                        <h2>{{dataService.fixedData.conversations[dataService.fixedData.activeConversation].lastMessageTime}}</h2>
+                    </div>
+                </div>
+                
+                <hr/>
+            </div>
+
+            <ng-scrollbar class="messages-box">
+
+                <message *ngFor="let message of dataService.fixedData.conversations[dataService.fixedData.activeConversation].messages"
+                    [user]="message.sender.name" [time]="message.time" [right]="message.sender.main">
+
+                    {{message.text}}
+                </message>
+            </ng-scrollbar>
+
+
+            <div class="send-box">
+                <themed-input placeholder="Say something..." type="text" (getObserver)="storeObservable($event)"></themed-input>
+                <button class="button attach">
+                    <fa-icon [icon]="faPaperclip"></fa-icon>
+                </button>
+                <button class="button send" (click)="sendMessage()">
+                    <fa-icon [icon]="faChevronRight"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <right-box></right-box>
+</main>

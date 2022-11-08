@@ -1,1 +1,1 @@
-# chat
+This a chat application i made for an application, made on Angular 14
