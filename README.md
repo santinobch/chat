@@ -1,1 +1,1 @@
-This a chat application i made for an application, made on Angular 14
+This a chat application i made for a job application, made on Angular 14
